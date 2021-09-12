@@ -1,17 +1,23 @@
 {
   "name": "engineering-team-generator",
   "version": "1.0.0",
-  "description": "* [Description](#description) * [Instalation](#instalation) * [Usage](#usage) * [Tools](#tools) * [Contact](#contact) * [License](#license) * [Acknowledgements](#acknowledgements)",
+  "description": "creates profiles for team members",
   "main": "index.js",
   "directories": {
     "lib": "lib"
   },
+  "dependencies": {
+    "init": "^0.1.2",
+    "inquirer": "^8.1.2",
+    "jest": "^27.1.1"
+  },
+  "devDependencies": {},
   "scripts": {
-    "test": "jest"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Kasdjno/engineering-team-generator.git"
+    "url": "git+https://github.com/Kasdjono/engineering-team-generator.git"
   },
   "keywords": [],
   "author": "",
@@ -19,10 +25,5 @@
   "bugs": {
     "url": "https://github.com/Kasdjono/engineering-team-generator/issues"
   },
-  "homepage": "https://github.com/Kasdjono/engineering-team-generator#readme",
-  "dependencies": {
-    "inquirer": "^8.1.2",
-    "jest": "^27.1.1"
-  }
+  "homepage": "https://github.com/Kasdjono/engineering-team-generator#readme"
 }
-
