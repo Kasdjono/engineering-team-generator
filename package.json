@@ -1,0 +1,28 @@
+{
+  "name": "engineering-team-generator",
+  "version": "1.0.0",
+  "description": "* [Description](#description) * [Instalation](#instalation) * [Usage](#usage) * [Tools](#tools) * [Contact](#contact) * [License](#license) * [Acknowledgements](#acknowledgements)",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kasdjno/engineering-team-generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kasdjono/engineering-team-generator/issues"
+  },
+  "homepage": "https://github.com/Kasdjono/engineering-team-generator#readme",
+  "dependencies": {
+    "inquirer": "^8.1.2",
+    "jest": "^27.1.1"
+  }
+}
+
