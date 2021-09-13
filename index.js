@@ -36,29 +36,25 @@ const newManager = () => {
       {
         type: "list",
         message: "Do you want to create another team member, if so what kind?",
-        choices: ['Engineer', 'Intern', 'Exit'], 
+        choices: ['Engineer', 'Intern', 'Exit'],
         name: "newEntry",
       },
-    ])
-    .then(managerInput => {
-      const { name, id, email, officeNumber, newEntry } = managerInput;
-      const manager = new Manager(name, id, email, officeNumber, newEntry);
+    ]);
+  const { name, id, email, officeNumber, newEntry } = managerInput;
+  const manager = new Manager(name, id, email, officeNumber, newEntry);
+  teamArray.push(manager);
+  console.log(manager);
+  if (managerInput.newEntry === 'Engineer') {
+    newEngineer();
+  }
+  else if (managerInput.newEntry === 'Intern') {
+    newIntern();
+  }
+  else {
+    fs.writeFile('./gen_html/index.html', generateHTML(teamData), 
+    (err) => err ? console.log(err) : console.log('Success!'));
 
-      teamArray.push(manager);
-      console.log(manager);
-
-      if (managerInput.newEntry === 'Engineer') {
-        newEngineer()
-      }
-      else if (managerInput.newEntry === 'Intern') {
-        newIntern()
-      }
-      else {
-        fs.writeFile('./gen_html/index.html', generateHTML(teamData), (err) =>
-        err ? console.log(err) : console.log('Success!'))
-      
-      }
-    });
+  }
 }
 
 // ------ input section for engineer ------ //
@@ -106,8 +102,8 @@ const newEngineer = () => {
         newIntern()
       }
       else {
-        fs.writeFile('./gen_html/index.html', generateHTML(teamData), (err) =>
-        err ? console.log(err) : console.log('Success!'))
+        fs.writeFile('./gen_html/index.html', generateHTML(teamData), 
+        (err) => err ? console.log(err) : console.log('Success!'))
       
       }
     });
@@ -158,8 +154,8 @@ const newIntern = () => {
         newIntern()
       }
       else {
-        fs.writeFile('./gen_html/index.html', generateHTML(teamData), (err) =>
-        err ? console.log(err) : console.log('Success!'))
+        fs.writeFile('./gen_html/index.html', generateHTML(teamData), 
+        (err) => err ? console.log(err) : console.log('Success!'))
       
       }
     });
