@@ -10,7 +10,7 @@ const Intern = require('./lib/Intern');
 const teamArray = [];
 
 // ------ input section for manager ------ //
-const addManager = () => {
+const newManager = () => {
   return inquirer
     .prompt([
       {
@@ -33,99 +33,140 @@ const addManager = () => {
         message: "Enter the office number of the manager?",
         name: "officeNumber",
       },
+      {
+        type: "list",
+        message: "Do you want to create another team member, if so what kind?",
+        choices: ['Engineer', 'Intern', 'Exit'], 
+        name: "newEntry",
+      },
     ])
     .then(managerInput => {
-      const { name, id, email, officeNumber } = managerInput;
-      const manager = new Manager(name, id, email, officeNumber);
+      const { name, id, email, officeNumber, newEntry } = managerInput;
+      const manager = new Manager(name, id, email, officeNumber, newEntry);
 
       teamArray.push(manager);
       console.log(manager);
+
+      if (managerInput.newEntry === 'Engineer') {
+        newEngineer()
+      }
+      else if (managerInput.newEntry === 'Intern') {
+        newIntern()
+      }
+      else {
+        fs.writeFile('./gen_html/index.html', generateHTML(teamData), (err) =>
+        err ? console.log(err) : console.log('Success!'))
+      
+      }
     });
 }
 
-
-// ------ input section for enginer ------ //
-const addEmployee = () => {
+// ------ input section for engineer ------ //
+const newEngineer = () => {
   return inquirer
     .prompt([
       {
-        type: "list",
-        message: "Choose the type of employee to be added under this manager.",
-        choices: ["Engeneer", "Intern"],
-        name: "role",
-      },
-      {
         type: "input",
-        message: " Enter the name of the engineer?",
+        message: "Enter the name of the engineer?",
         name: "name",
       },
       {
         type: "input",
-        message: "Enter the id number of the engineer?",
+        message: "Enter the id number of the engineer:",
         name: "id",
       },
       {
-        when: (input) => input.role === "Engineer",
         type: "input",
         message: "Enter the email of the engineer?",
         name: "email",
       },
       {
-        when: (input) => input.role === "Intern",
         type: "input",
-        message: "Enter the github address of the engineer?",
-        name: "github",
+        message: "Enter the office number of the engineer?",
+        name: "gitHub",
+      },
+      {
+        type: "list",
+        message: "Do you want to create another team member, if so what kind?",
+        choices: ['Engineer', 'Intern', 'Exit'], 
+        name: "newEntry",
       },
     ])
-    .then(employeeData => {
-      let { name, id, email, role, github, school, confirmAddEmployee } = employeeData;
-      let employee;
+    .then(engineerInput => {
+      const { name, id, email, github } = engineerInput;
+      const engineer = new Engineer(name, id, email, github);
 
-      if (role === "Engineer") {
-        employee = new Engineer(name, id, email, github);
-        console.log(employee);
+      teamArray.push(engineer);
+      console.log(engineer);
 
-      } 
-
-      else if (role === "Intern") {
-        employee = new Intern(name, id, email, school);
-        console.log(employee);
+      if (engineerInput.newEntry === 'Engineer') {
+        newEngineer()
       }
-
-      teamArray.push(employee);
-
-      if (confirmAddEmployee) {
-        return addEmployee(teamArray);
-      } 
-      
+      else if (engineerInput.newEntry === 'Intern') {
+        newIntern()
+      }
       else {
-        return teamArray;
+        fs.writeFile('./gen_html/index.html', generateHTML(teamData), (err) =>
+        err ? console.log(err) : console.log('Success!'))
+      
       }
-    })
-};
+    });
+}
 
-const writefile = data => {
-  fs.writeFile('./gen_html/index.html', data, err => {
-      if (err) {
-          console.log(err);
-          return;
-      } else {
-          console.log('Success!')
+// ------ input section for intern ------ //
+const newIntern = () => {
+  return inquirer
+    .prompt([
+      {
+        type: "input",
+        message: "Enter the name of the intern?",
+        name: "name",
+      },
+      {
+        type: "input",
+        message: "Enter the id number of the intern:",
+        name: "id",
+      },
+      {
+        type: "input",
+        message: "Enter the email of the intern?",
+        name: "email",
+      },
+      {
+        type: "input",
+        message: "Enter the school that the intern is enrolled in?",
+        name: "school",
+      },
+      {
+        type: "list",
+        message: "Do you want to create another team member, if so what kind?",
+        choices: ['Engineer', 'Intern', 'Exit'], 
+        name: "newEntry",
+      },
+    ])
+    .then(internInput => {
+      const { name, id, email, school, newEntry } = internInput;
+      const intern = new Intern(name, id, email, school, newEntry);
+
+      teamArray.push(intern);
+      console.log(intern);
+
+      if (internInput.role === 'Engineer') {
+        newEngineer()
       }
-  })
-};
+      else if (internInput.role === 'Intern') {
+        newIntern()
+      }
+      else {
+        fs.writeFile('./gen_html/index.html', generateHTML(teamData), (err) =>
+        err ? console.log(err) : console.log('Success!'))
+      
+      }
+    });
+}
 
-addManager()
-.then(addEmployee)
-.then(teamArray => {
-  return generateHTML(teamArray)
-})
-.then(pageHTML => {
-  return writefile (pageHTML);
-})
-.catch(err => {
-  console.log(err);
-});
+
+
 
 
 
