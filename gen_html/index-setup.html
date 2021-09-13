@@ -13,14 +13,14 @@
 
 <body>
 
-    <header class="mb-5">
+    <header class="mb-2">
         <h1 class="main-header">My Team</h1>
     </header>
 
     <div class="row align-items-start">
         <section class="row justify-content-around">
 
-            <div class="col-12 col-sm-6 col-lg-4 mt-0 p-0">
+            <div class="col-12 col-sm-6 col-lg-4 mt-5 p-0">
                 <div class="card mx-auto" style="width: 24rem;">
                     <div class="card-body">
                         <h5 class="card-title">${Manager.name}</h5>
@@ -38,7 +38,7 @@
                 </div>
             </div>
 
-            <div class="col-12 col-sm-6 col-lg-4 mt-0 p-0">
+            <div class="col-12 col-sm-6 col-lg-4 mt-5 p-0">
                 <div class="card mx-auto" style="width: 24rem;">
                     <div class="card-body">
                         <h5 class="card-title">${Engineer.name}</h5>
@@ -56,7 +56,60 @@
                 </div>
             </div>
 
-            <div class="col-12 col-sm-6 col-lg-4 mt-0 p-0">
+            <div class="col-12 col-sm-6 col-lg-4 mt-5 p-0">
+                <div class="card mx-auto" style="width: 24rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">${Intern.name}</h5>
+                        <h6 class="job-title">${Intern.role}</h6>
+                        <div class="card w-98">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">ID#: ${Intern.id}</li>
+                                <li class="list-group-item">Email: <a href="#">${Intern.email}</a>
+                                </li>
+                                <li class="list-group-item">GitHub: ${Intern.school}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 mt-5 p-0">
+                <div class="card mx-auto" style="width: 24rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">${Manager.name}</h5>
+                        <h6 class="job-title">${Manager.role}</h6>
+                        <div class="card w-98">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">ID#: ${Manager.id}</li>
+                                <li class="list-group-item">Email: <a href="#">${Manager.email}</a>
+                                </li>
+                                <li class="list-group-item">Manager office: ${Manager.office}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 mt-5 p-0">
+                <div class="card mx-auto" style="width: 24rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">${Engineer.name}</h5>
+                        <h6 class="job-title">${Engineer.role}</h6>
+                        <div class="card w-98">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">ID#: ${Engineer.id}</li>
+                                <li class="list-group-item">Email: <a href="#">${Engineer.email}</a>
+                                </li>
+                                <li class="list-group-item">GitHub: <a href="#">${Engineer.github}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4 mt-5 p-0">
                 <div class="card mx-auto" style="width: 24rem;">
                     <div class="card-body">
                         <h5 class="card-title">${Intern.name}</h5>

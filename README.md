@@ -4,7 +4,9 @@
 ## Application Link
 <br/>
 
-["Link to video demonstration"](https://kasdjono.github.io/task-organizer/)  
+["Link to video demonstration"](https://drive.google.com/file/d/1RIpGLNpLyBp8zorW28XELOonIhj-0c_0/view?usp=sharing)  
+
+["Link to github repository"](https://github.com/Kasdjono/engineering-team-generator)
 <br/>
 
 ## This program creates a webpage that displays a newly created team.
@@ -31,6 +33,8 @@
 
 
 !["screen shot 1 of website after adjustments"](./images/image-1.png)
+
+!["screen shot 1 of website after adjustments"](./images/image-2.png)
 
 
 <br/>

@@ -1,6 +1,6 @@
 const managerCard = (manager) => {
     return `
-        <div class="col-12 col-sm-6 col-lg-4 mt-0 p-0">
+        <div class="col-12 col-sm-6 col-lg-4 mt-5 p-0">
             <div class="card mx-auto" style="width: 24rem;">
                 <div class="card-body">
                     <h5 class="card-title">${manager.getName()}</h5>
@@ -8,7 +8,7 @@ const managerCard = (manager) => {
                     <div class="card w-98">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">ID#: ${manager.getId()}</li>
-                            <li class="list-group-item">Email: <a href="email:${manager.getEmail()}">${manager.getEmail()}</a></li>
+                            <li class="list-group-item">Email: <a href="${manager.getEmail()}">${manager.getEmail()}</a></li>
                             <li class="list-group-item">Manager office: ${manager.getOfficeNumber()}</a></li>
                         </ul>
                     </div>
@@ -19,7 +19,7 @@ const managerCard = (manager) => {
 
 const engineerCard = (engineer) => {
     return `
-        <div class="col-12 col-sm-6 col-lg-4 mt-0 p-0">
+        <div class="col-12 col-sm-6 col-lg-4 mt-5 p-0">
             <div class="card mx-auto" style="width: 24rem;">
                 <div class="card-body">
                     <h5 class="card-title">${engineer.getName()}</h5>
@@ -27,7 +27,7 @@ const engineerCard = (engineer) => {
                     <div class="card w-98">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">ID#: ${engineer.getId()}</li>
-                            <li class="list-group-item">Email: <a href="email:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
+                            <li class="list-group-item">Email: <a href="${engineer.getEmail()}">${engineer.getEmail()}</a></li>
                             <li class="list-group-item">GitHub: ${engineer.getGithub()}</li>
                         </ul>
                     </div>
@@ -38,7 +38,7 @@ const engineerCard = (engineer) => {
 
 const internCard = (intern) => {
     return `
-        <div class="col-12 col-sm-6 col-lg-4 mt-0 p-0">
+        <div class="col-12 col-sm-6 col-lg-4 mt-5 p-0">
             <div class="card mx-auto" style="width: 24rem;">
                 <div class="card-body">
                     <h5 class="card-title">${intern.getName()}</h5>
@@ -46,9 +46,9 @@ const internCard = (intern) => {
                     <div class="card w-98">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">ID#: ${intern.getId()}</li>
-                            <li class="list-group-item">Email: <a href="email:${intern.getEmail()}">${intern.getEmail()}</a>
+                            <li class="list-group-item">Email: <a href="${intern.getEmail()}">${intern.getEmail()}</a>
                             </li>
-                            <li class="list-group-item">GitHub: ${intern.getSchool()}</li>
+                            <li class="list-group-item">School: ${intern.getSchool()}</li>
                         </ul>
                     </div>
                 </div>
@@ -107,7 +107,7 @@ function generateHTML(teamCards) {
 
 <body>
 
-    <header class="mb-5">
+    <header class="mb-2">
         <h1 class="main-header">My Team</h1>
     </header>
 

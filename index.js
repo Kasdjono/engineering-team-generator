@@ -81,7 +81,7 @@ const newEngineer = () => {
       },
       {
         type: "input",
-        message: "Enter the office number of the engineer?",
+        message: "Enter github username of the engineer?",
         name: "github",
       },
       {
@@ -149,10 +149,10 @@ const newIntern = () => {
       teamArray.push(intern);
       console.log(intern);
 
-      if (internInput.role === 'Engineer') {
+      if (internInput.newEntry === 'Engineer') {
         newEngineer()
       }
-      else if (internInput.role === 'Intern') {
+      else if (internInput.newEntry === 'Intern') {
         newIntern()
       }
       else {
