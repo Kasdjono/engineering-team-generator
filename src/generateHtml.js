@@ -1,49 +1,98 @@
-const { teamData } = require("init");
+const managerCard = (manager) => {
+    return `
+        <div class="col-12 col-sm-6 col-lg-4 mt-0 p-0">
+            <div class="card mx-auto" style="width: 24rem;">
+                <div class="card-body">
+                    <h5 class="card-title">${manager.getName()}</h5>
+                    <h6 class="job-title">${manager.getRole()}</h6>
+                    <div class="card w-98">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">ID#: ${manager.getId()}</li>
+                            <li class="list-group-item">Email: <a href="email:${manager.getEmail()}">${manager.getEmail()}</a></li>
+                            <li class="list-group-item">Manager office: ${manager.getOfficeNumber()}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+};
+
+const engineerCard = (engineer) => {
+    return `
+        <div class="col-12 col-sm-6 col-lg-4 mt-0 p-0">
+            <div class="card mx-auto" style="width: 24rem;">
+                <div class="card-body">
+                    <h5 class="card-title">${engineer.getName()}</h5>
+                    <h6 class="job-title">${engineer.getRole()}</h6>
+                    <div class="card w-98">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">ID#: ${engineer.getId()}</li>
+                            <li class="list-group-item">Email: <a href="email:${engineer.getMail()}">${engineer.getEmail()}</a></li>
+                            <li class="list-group-item">GitHub: ${engineer.getGithub()}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+};
+
+const internCard = (intern) => {
+    return `
+        <div class="col-12 col-sm-6 col-lg-4 mt-0 p-0">
+            <div class="card mx-auto" style="width: 24rem;">
+                <div class="card-body">
+                    <h5 class="card-title">${intern.getName()}</h5>
+                    <h6 class="job-title">${intern.getRole()}</h6>
+                    <div class="card w-98">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">ID#: ${intern.getId()}</li>
+                            <li class="list-group-item">Email: <a href="email:${intern.getEmail()}">${intern.getEmail()}</a>
+                            </li>
+                            <li class="list-group-item">GitHub: ${intern.getSchool()}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+};
+
+function makeCards(teamMember) {
+    const cardArray = [];
+
+    for (let i = 0; i < teamMember.length; i++) {
+        const employeeInfo = teamMember[i];
+        const role = employeeInfo.getRole();
+
+        if (role === "Manager") {
+            const managerInfo = managerCard(employeeInfo);
+
+            cardArray.push(managerInfo);
+
+        } else {
+            if (role === "Engineer") {
+                const engineerInfo = engineerCard(employeeInfo);
+
+                cardArray.push(engineerInfo);
+
+            } else {
+                if (role === "Intern") {
+                    const internInfo = internCard(employeeInfo);
+
+                    cardArray.push(internInfo);
+                }
+            }
+        }
+    }
+
+    const teamCards = cardArray.join("");
+    return teamCards;
+};
 
 
-for (i=0; i<teamData.length; i++) {
-  if (this.role === "Manager") {
-    managerCard();
-  }
-  else if (this.role === "Engineer") {
-    engineerCard();
-  }
-  else if (this.role === "Intern") {
-    internCard();
-  }
 
-}
-
-
-function managerCard () {
-  this.name = Manager.name;
-  this.role = Manager.role;
-  this.id = Manager.id;
-  this.email = Manager.email; 
-  this.office = Manager.office;
-}
-
-function  engineerCard () {
-  this.name = Engineer.name;
-  this.role = Engineer.role;
-  this.id = Engineer.id;
-  this.email = Engineer.email; 
-  this.office = Engineer.github;
-}
-
-function internCard () {
-  this.name = Intern.name;
-  this.role = Intern.role;
-  this.id = Intern.id;
-  this.email = Intern.email; 
-  this.office = Intern.school;
-}
-
-
-function generateHtml(data) {
-
-const htmlString = 
-`<!DOCTYPE html>
+function generateHTML(teamCards) {
+    return `
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -62,65 +111,10 @@ const htmlString =
         <h1 class="main-header">My Team</h1>
     </header>
 
-    ${managerCard()}
-    ${engineerCard()}
-    ${internCard()}
-
     <div class="row align-items-start">
         <section class="row justify-content-around">
 
-            <div class="col-12 col-sm-6 col-lg-4 mt-0 p-0">
-                <div class="card mx-auto" style="width: 24rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">${Manager.name}</h5>
-                        <h6 class="job-title">${Manager.role}</h6>
-                        <div class="card w-98">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">ID#: ${Manager.id}</li>
-                                <li class="list-group-item">Email: <a href="#">${Manager.email}</a>
-                                </li>
-                                <li class="list-group-item">Manager office: ${Manager.office}</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-sm-6 col-lg-4 mt-0 p-0">
-                <div class="card mx-auto" style="width: 24rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">${Engineer.name}</h5>
-                        <h6 class="job-title">${Engineer.role}</h6>
-                        <div class="card w-98">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">ID#: ${Engineer.id}</li>
-                                <li class="list-group-item">Email: <a href="#">${Engineer.email}</a>
-                                </li>
-                                <li class="list-group-item">GitHub: <a href="#">${Engineer.github}</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-sm-6 col-lg-4 mt-0 p-0">
-                <div class="card mx-auto" style="width: 24rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">${Intern.name}</h5>
-                        <h6 class="job-title">${Intern.role}</h6>
-                        <div class="card w-98">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">ID#: ${Intern.id}</li>
-                                <li class="list-group-item">Email: <a href="#">${Intern.email}</a>
-                                </li>
-                                <li class="list-group-item">GitHub: ${Intern.school}</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div>${makeCards(teamCards)}</div>
 
         </section>
     </div>
@@ -135,7 +129,6 @@ const htmlString =
 </html>
 `
 
-return htmlString;
 }
 
-module.exports = generateHtml;
+module.exports = generateHTML;
