@@ -39,22 +39,25 @@ const newManager = () => {
         choices: ['Engineer', 'Intern', 'Exit'],
         name: "newEntry",
       },
-    ]);
-  const { name, id, email, officeNumber, newEntry } = managerInput;
-  const manager = new Manager(name, id, email, officeNumber, newEntry);
-  teamArray.push(manager);
-  console.log(manager);
-  if (managerInput.newEntry === 'Engineer') {
-    newEngineer();
-  }
-  else if (managerInput.newEntry === 'Intern') {
-    newIntern();
-  }
-  else {
-    fs.writeFile('./gen_html/index.html', generateHTML(teamData), 
-    (err) => err ? console.log(err) : console.log('Success!'));
+    ])
+    .then((managerInput)=> {
+      const { name, id, email, officeNumber, newEntry } = managerInput;
+      const manager = new Manager(name, id, email, officeNumber, newEntry);
 
-  }
+      teamArray.push(manager);
+      console.log(manager);
+
+      if (managerInput.newEntry === 'Engineer') {
+        newEngineer();
+      }
+      else if (managerInput.newEntry === 'Intern') {
+        newIntern();
+      }
+      else {
+        fs.writeFile('./gen_html/index.html', generateHTML(teamArray),
+          (err) => err ? console.log(err) : console.log('Success!'))
+      }
+    });
 }
 
 // ------ input section for engineer ------ //
@@ -79,16 +82,16 @@ const newEngineer = () => {
       {
         type: "input",
         message: "Enter the office number of the engineer?",
-        name: "gitHub",
+        name: "github",
       },
       {
         type: "list",
         message: "Do you want to create another team member, if so what kind?",
-        choices: ['Engineer', 'Intern', 'Exit'], 
+        choices: ['Engineer', 'Intern', 'Exit'],
         name: "newEntry",
       },
     ])
-    .then(engineerInput => {
+    .then((engineerInput) => {
       const { name, id, email, github } = engineerInput;
       const engineer = new Engineer(name, id, email, github);
 
@@ -102,9 +105,8 @@ const newEngineer = () => {
         newIntern()
       }
       else {
-        fs.writeFile('./gen_html/index.html', generateHTML(teamData), 
-        (err) => err ? console.log(err) : console.log('Success!'))
-      
+        fs.writeFile('./gen_html/index.html', generateHTML(teamArray),
+          (err) => err ? console.log(err) : console.log('Success!'))
       }
     });
 }
@@ -136,11 +138,11 @@ const newIntern = () => {
       {
         type: "list",
         message: "Do you want to create another team member, if so what kind?",
-        choices: ['Engineer', 'Intern', 'Exit'], 
+        choices: ['Engineer', 'Intern', 'Exit'],
         name: "newEntry",
       },
     ])
-    .then(internInput => {
+    .then((internInput) => {
       const { name, id, email, school, newEntry } = internInput;
       const intern = new Intern(name, id, email, school, newEntry);
 
@@ -154,13 +156,13 @@ const newIntern = () => {
         newIntern()
       }
       else {
-        fs.writeFile('./gen_html/index.html', generateHTML(teamData), 
-        (err) => err ? console.log(err) : console.log('Success!'))
-      
+        fs.writeFile('./gen_html/index.html', generateHTML(teamArray),
+          (err) => err ? console.log(err) : console.log('Success!'))
       }
     });
 }
 
+newManager()
 
 
 
